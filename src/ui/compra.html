@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="../ui/styles/compra.css">
+    <title>Cargar compra de proveedor</title>
+</head>
+<body>
+    <a href="./index.html"> <button type="button" class="btn btn-info"> Volver... </button> </a>
+
+    <form name="agregarProducto" id="agregarProducto"> 
+        <input placeholder="Numero de Nota" id="nota">
+        <input placeholder="Proveedor" id="proveedor">
+        <input placeholder="Total" id="total" type="number">
+        <select id="credito-contado">
+            <option value="credito"> Credito </option> 
+            <option value="contado"> Contado </option> 
+        </select>
+        <div class="card card-body my-2"> 
+            <span> Selecciona el método de costeo </span>
+            <select id="costeo"> 
+                <option value = 'ultimocosto'> Ultimo Costo </option>
+                <option value = 'costopromedio'> Costo Promedio </option>
+            </select>
+        <input placeholder="Nombre del Producto" id="name" onkeyup="autocompleteProduct(this.value)">
+        <div id="suggestions"></div>
+        <input placeholder="Costo" type="number" id="cost"> 
+        <input type="number" placeholder="Unidades Compradas" name="" id="stock">
+        <input type="text" placeholder="Categoria" name="" id="categoria"> 
+        <textarea type="text" placeholder="Detalle para productos especiales" id="detalle"></textarea>
+        <input type="submit" class="btn btn-primary" value="Cargar Producto a la Nota"/>
+        </div>
+    </form>
+
+    <button class="btn btn-primary" id="cargar"> Cargar Compra </button>
+
+    <div class="card card-body my-2" id="products"> </div>
+
+    <script src="../controllers/compra.js"> </script>
+</body>
+</html>

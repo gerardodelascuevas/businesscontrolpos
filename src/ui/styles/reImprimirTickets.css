@@ -1,0 +1,59 @@
+#parte2{
+    margin: 0 auto;
+    margin: 0 auto; 
+    justify-content: center;
+    align-items: center;
+}
+
+span{
+    margin: 0 auto; 
+}
+.ticket{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 auto; 
+    width: 20%;
+}
+#contacto{
+    width: 30%;
+    height: 50%;
+    margin: 0 auto; 
+}
+
+.telefono {
+    font-size: smaller;
+    margin: 0 auto; 
+}
+
+.interCard{
+    margin: 0 auto;
+}
+
+.centrar{
+    margin: 0 auto; 
+    justify-content: center;
+    align-items: center;
+}
+
+#alinearwasa{
+    display: flex;
+    width: 75%;
+}
+
+
+@media print{
+    body * {
+        visibility: hidden;
+      }
+
+      #parte2 * {
+        visibility: visible;
+        text-align: center;
+        position: relative;
+      }  
+
+      .ticket{
+        margin-left: -2.8em;
+      }
+
+}

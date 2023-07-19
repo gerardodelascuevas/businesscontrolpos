@@ -1,0 +1,8 @@
+.selectPozolov{
+    cursor: pointer;
+    
+}
+
+.selectPozolov:hover{
+    background-color: bisque;
+}

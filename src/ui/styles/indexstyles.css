@@ -1,0 +1,20 @@
+#controles{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2em;
+}
+.btn{
+    padding: 1em;
+    border: solid 1px black;
+    width: 50%;
+    margin: 1rem;
+    border-radius: 1em;
+}
+
+.btn:hover{
+-webkit-transform:scale(1.25);
+-moz-transform:scale(1.25);
+-ms-transform:scale(1.25);
+-o-transform:scale(1.25);
+transform:scale(1.25);
+}

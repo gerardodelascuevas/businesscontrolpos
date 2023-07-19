@@ -1,0 +1,39 @@
+#logo{
+    width: 20%
+}
+
+.pink{
+  background-color: pink;
+}
+
+.interCard{
+  border: solid 2px gray; 
+}
+#corte, #notasACredito, #pagosycobros,  #facturas{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media print{
+  body{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+   .pink{
+      background-color: pink !important;
+    }
+    body * {
+        /* display: none;
+        visibility: hidden; */
+      }
+    #parte4, #parte0 {
+        visibility: visible;
+        display: block;
+      
+      }
+      #selecciondia, #parte3 {
+        display: none;
+    }
+   
+   
+}
