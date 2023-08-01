@@ -1,3 +1,4 @@
+const { default: Swal } = require("sweetalert2");
 const { facturasPendientes, loadFacturaDone } = require("../main")
 
 
@@ -29,7 +30,11 @@ const render = async ()=> {
 
 async function cargarFactura(id){
     await loadFacturaDone(id); 
-    alert('base de datos actualizada con éxito'); 
+    Swal.fire(
+        'Base de datos actualizada exitosamente! ',
+        'Presiona para continuar!',
+        'success'
+      )
     window.location.reload(); 
 }
 

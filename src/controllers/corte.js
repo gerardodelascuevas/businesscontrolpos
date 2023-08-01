@@ -1,3 +1,4 @@
+const { default: Swal } = require("sweetalert2");
 const { getFacturas, submitPago, getDates, getSomeTickets, getSomeBills, getSomePagos } = require("../main")
 let filterTickets = new Array;
 
@@ -442,7 +443,11 @@ const myCashMovement = () => {
             fecha: miDia
         }
         loadCashMovement(pagoADB); 
-        alert('Pago cargado con exito')
+        Swal.fire(
+            'Pago cargado con éxito ',
+            'Presiona para continuar!',
+            'success'
+          ).then(()=> window.location.reload())
         document.getElementById('pagos').value = '';
         document.getElementById('descripcionpago').value = ''
         document.getElementById('cobros').value = ''
@@ -457,7 +462,11 @@ const myCashMovement = () => {
             fecha: miDia
         }
         loadCashMovement(pagoADB); 
-        alert('cobro cargado con exito')
+        Swal.fire(
+            'Cobro cargado con éxito ',
+            'Presiona para continuar!',
+            'success'
+          ).then(()=> window.location.reload())
         document.getElementById('pagos').value = '';
         document.getElementById('descripcionpago').value = ''
         document.getElementById('cobros').value = ''
@@ -471,6 +480,7 @@ const myCashMovement = () => {
         const misDatos = document.getElementById('datosmovimientoscash'); 
         misDatos.innerHTML = ``;    
     }
+   
 }
 
 const renderMovements = async() => {

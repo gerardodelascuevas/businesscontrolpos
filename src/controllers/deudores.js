@@ -1,3 +1,4 @@
+const { default: Swal } = require("sweetalert2");
 const { getExpiredTickets, getMyExpiredTicket, submitPago, loadPayFromExpiredTiket } = require("../main");
 
 let fecha = new Date();
@@ -133,9 +134,12 @@ const cargarPago = async(id)=> {
     
     await loadPayFromExpiredTiket(id); 
     await submitPago(pago); 
-    alert('Pago Cargado con éxito'); 
-    // setTimeout(()=> window.print(), 1500)
     window.print()
+    Swal.fire(
+        'Pago Cargado con éxito ',
+        'Presiona para continuar!',
+        'success'
+      )   
     window.location.reload(); 
 }
 

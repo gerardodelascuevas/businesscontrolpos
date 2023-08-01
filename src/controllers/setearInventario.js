@@ -1,3 +1,4 @@
+const { default: Swal } = require('sweetalert2');
 const {getMyProductById, updateMyProductById, getProducts} = require('../main')
 
 const buscar = document.getElementById('buscar');
@@ -11,14 +12,47 @@ async function getMyProducts(){
 }
 
 //se debe mandar a llamar renderProduct con el ID del producto a renderizar 
-
 const nombreBuscado = document.getElementById('nombre'); 
 nombreBuscado.addEventListener('change', (e)=> {
     console.log(e.target.value)
-    let MiProducto = allProducts.filter(x=> x.name.toLowerCase().trim().includes(e.target.value))[0]
-    console.log('prod ', MiProducto)
-    renderProduct(MiProducto.id); 
+    // let MiProducto = allProducts.filter(x=> x.name.toLowerCase().trim().includes(e.target.value))[0]
+    // console.log('prod ', MiProducto)
+    autocompleteProduct(e.target.value)
+   // renderProduct(MiProducto.id); 
 })
+
+//SUGERIR PRODUCTOS: 
+function autocompleteProduct(inputValue) {
+    let suggestionsContainer = document.getElementById("suggestions");
+    suggestionsContainer.innerHTML = ""; // Limpiar las sugerencias anteriores  
+    if (inputValue.length === 0) {
+      return; // Si no hay texto en el input, no mostrar sugerencias
+    }  
+    let matchedProducts = findMatchingProducts(inputValue);  
+    // Mostrar las sugerencias
+    matchedProducts.forEach(function(product) {
+      let suggestion = document.createElement("div");    
+      suggestionsContainer.innerHTML += `<option class='selectPozolov' onclick="fillInputs('${product.name}', ${product.id})"> ${product.name} </option>`
+      suggestionsContainer.appendChild(suggestion);
+    });
+  }
+  
+  function findMatchingProducts(inputValue) {
+    let matchedProducts = [];
+    if(inputValue){
+      matchedProducts = allProducts.filter(x=> x.name.toLowerCase().trim().includes(inputValue))
+      if(matchedProducts.length > 5) matchedProducts = matchedProducts.slice(0,4);  
+     } else {
+      matchedProducts = [];
+     }
+    return matchedProducts;
+  }
+  
+  //Rellenar datos de los Inputs en base a sugerencia Pozolezca:
+  
+  function fillInputs(name, id){    
+    renderProduct(id);
+  }
 
 const container = document.getElementById('container');
 
@@ -69,16 +103,30 @@ const saveChanges = async(id)=> {
     let detalle = document.getElementById('nuevoDetalle').value
 
     if(id && nuevoNombre && nuevoCosto && nuevoStock && password === contraseña){
-        alert('Exito')
+        Swal.fire({
+            icon: 'success',
+            title: `Éxito!`,
+            showConfirmButton: false,
+            timer: 1500
+          })
         try {          
             if(detalle === 'null' || detalle == 'undefined'){
                 await updateMyProductById(id, nuevoNombre, nuevoCosto, nuevoStock, categoria);
-                alert('La base de datos se ha actualizado con éxito')
-                setTimeout(window.location.reload(), 3000)
+                Swal.fire({
+                    icon: 'success',
+                    title: `La base de datos se ha actualizado con éxito!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  }).then(()=> setTimeout(window.location.reload(), 1000))
+              
             } else {
                  await updateMyProductById(id, nuevoNombre, nuevoCosto, nuevoStock, categoria, detalle); 
-                 alert('La base de datos se ha actualizado con éxito')
-                 setTimeout(window.location.reload(), 3000)
+                 wal.fire({
+                    icon: 'success',
+                    title: `La base de datos se ha actualizado con éxito!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  }).then(()=> setTimeout(window.location.reload(), 1000))                
             }
            
 
@@ -87,7 +135,12 @@ const saveChanges = async(id)=> {
         }
         
     } else {
-        alert('Algo ha fallado, por favor revisa los datos del producto y tus credenciales')
+        return Swal.fire({
+            icon: 'error',
+            title: `Algo ha fallado, por favor revisa los datos del producto y tus credenciales`,
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
 }
 

@@ -1,3 +1,4 @@
+const { default: Swal } = require('sweetalert2');
 const { getProducts, updateMyProducts, submitFactura, createProduct } = require('../main'); 
 
 
@@ -153,7 +154,11 @@ cargar.addEventListener('click', async()=> {
           let detalle = productsInBill[i].detalle
           if(!detalle) categoria = oldProducts[j].detalle; 
           await updateMyProducts(oldProducts[j].name.trim(), cost, stock, categoria);
-         alert(`Se ha actualizado ${oldProducts[j].name.trim()} al último costo ${cost} y un nuevo stock ${stock}`);
+          Swal.fire(
+            'Base de datos exitosamente! ',
+            `Se ha actualizado ${oldProducts[j].name.trim()} al último costo ${cost} y un nuevo stock ${stock}`,
+            'success'
+          )
         } else {
           let stock = Number(oldProducts[j].stock) + Number(productsInBill[i].stock);
           let newcost = ((oldProducts[j].stock * oldProducts[j].cost) + (productsInBill[i].stock * productsInBill[i].cost)) / stock;
@@ -162,7 +167,11 @@ cargar.addEventListener('click', async()=> {
           if(!categoria) categoria = oldProducts[j].CATEGORIA;
           if(!detalle) categoria = oldProducts[j].detalle; 
           await updateMyProducts(oldProducts[j].name.trim(), newcost, stock, categoria);
-          alert(`Se ha actualizado ${oldProducts[j].name.trim()} al costo promedio ${newcost} y un nuevo stock ${stock}`);
+          Swal.fire(
+            'Base de datos exitosamente! ',
+            `Se ha actualizado ${oldProducts[j].name.trim()} al costo promedio ${newcost} y un nuevo stock ${stock}`,
+            'success'
+          )
         }
         break;
       }
@@ -176,17 +185,24 @@ cargar.addEventListener('click', async()=> {
         detalle: productsInBill[i].detalle
       }; 
       const result = await createProduct(myProduct);
-      alert(`Se ha creado el producto ${myProduct.name} con un costo de ${myProduct.cost} y un stock de ${myProduct.stock}`);
+      // alert(`Se ha creado el producto ${myProduct.name} con un costo de ${myProduct.cost} y un stock de ${myProduct.stock}`);
+      Swal.fire(
+        'Base de datos exitosamente! ',
+        `Se ha creado el producto ${myProduct.name} con un costo de ${myProduct.cost} y un stock de ${myProduct.stock}`,
+        'success'
+      )
     }
   }
-  //alert('La base de datos se ha actualizado con éxito');
-  await submitFactura(factura);                
-         
+  Swal.fire(
+    'Base de datos actualizada exitosamente! ',
+    'Presiona para continuar!',
+    'success' 
+  ).then(()=> submitFactura(factura))
+ .then(()=> window.location.reload());            
 });
 
 const init = async ()=> {
  allProducts2 =  await getProducts(); 
- console.log(allProducts2)
 }
 
 init(); 

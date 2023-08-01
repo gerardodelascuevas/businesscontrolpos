@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=img/logoplan.ico --prune=true --out=release-builds",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/img/logoplan.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Business Control\"",
+    "package-win": "electron-packager . BusinessControl --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/img/logoplan.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Business Control\"",
     "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=img/logoplan.ico --prune=true --out=release-builds"
   },
   "author": "gerardodelascuevas",
@@ -28,6 +28,7 @@
     "electron-osx-prompt": "^1.4.1",
     "promise-mysql": "^5.2.0",
     "read-excel-file": "^5.6.1",
+    "sweetalert2": "^11.7.20",
     "tableexport": "^5.2.0",
     "xlsx": "^0.18.5"
   }

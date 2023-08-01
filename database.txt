@@ -1,13 +1,12 @@
-Crear base de datos bodega1; 
+create database bodega1; 
 
-crear tabla products;
+use bodega1; 
  CREATE TABLE products( ID VARCHAR(50),  name VARCHAR(50) NOT NULL,  cost FLOAT,  proveedor VARCHAR(50),  CATEGORIA VARCHAR(50));
  ALTER TABLE products ADD COLUMN stock FLOAT;
  alter table products change id id INT(10)AUTO_INCREMENT PRIMARY KEY;
 alter table products change name name VARCHAR(500);
 alter table products change proveedor detalle varchar(500);
 
-crear tabla tickets; 
 CREATE TABLE tickets(id VARCHAR(50), client VARCHAR(50) NOT NULL, products json, valor FLOAT, fecha VARCHAR(50));
 ALTER TABLE tickets ADD COLUMN facturar VARCHAR(50);
 ALTER TABLE tickets ADD COLUMN credito  VARCHAR(50);
@@ -16,22 +15,16 @@ ALTER TABLE tickets ADD COLUMN costo FLOAT;
 ALTER TABLE tickets ADD COLUMN pago VARCHAR(50);
 alter table tickets change id id INT(10)AUTO_INCREMENT PRIMARY KEY;
 
-
-crear tabla facturas: 
 CREATE TABLE facturas(numero VARCHAR(50), proveedor VARCHAR(50), pago VARCHAR(50), productos json, total FLOAT, fecha VARCHAR(50));
 alter table facturas add column id INT(100);
 alter table facturas change id id INT(10)AUTO_INCREMENT PRIMARY KEY;
 
-CREAR TABLA DE PAGOS 
-CREATE TABLE pagos(monto FLOAT, tipo VARCHAR (50), descripcion VARCHAR(2000))
+CREATE TABLE pagos(monto FLOAT, tipo VARCHAR (50), descripcion VARCHAR(2000));
 ALTER TABLE pagos ADD COLUMN metodo VARCHAR(50);
 ALTER TABLE pagos ADD COLUMN fecha VARCHAR(50);
 alter table pagos add column id INT(100);
 alter table pagos change id id INT(10)AUTO_INCREMENT PRIMARY KEY;
 
-
-consulta para ahorrar complejidad espacial y temporal: 
-SELECT * FROM pagos WHERE fecha = '8-4-2023';
 
 
 

@@ -1,3 +1,4 @@
+const { default: Swal } = require("sweetalert2");
 const { getMyExpiredTicket, updateMyTicketValues, getProductByName, updateProductWhenYouDeleteTickets, deleteTicket } = require("../main");
 
 const buscar = document.getElementById('buscar')
@@ -56,7 +57,12 @@ async function deleteMyTicket(ticket){
         console.log('no hay ticket')
     } 
     if(password !== thePassword){
-        return alert('Verifica tu clave de administrador'); 
+        return Swal.fire({
+            icon: 'error',
+            title: `Verifica tu clave de administrador`,
+            showConfirmButton: false,
+            timer: 1500
+          })
     } else {
         try {
         const nota = await getMyExpiredTicket(ticket)
@@ -68,11 +74,20 @@ async function deleteMyTicket(ticket){
             await updateProductWhenYouDeleteTickets(productForUpdate[0].id, cantidad)
         }
             await deleteTicket(ticket)
-            alert('La base de datos se ha modificado con éxito');
-            setTimeout(window.location.reload(), 3000); 
+            return Swal.fire({
+                icon: 'success',
+                title: `La base de datos se ha modificado con éxito`,
+                showConfirmButton: false,
+                timer: 1500
+              }).then(()=> setTimeout(window.location.reload(), 1000)); 
         } catch (error) {
-            alert('Algo ha fallado'); 
-            console.error(error); 
+            return Swal.fire({
+                icon: 'error',
+                title: `Algo ha fallado, contacta al equipo de desarrollo`,
+                showConfirmButton: false,
+                timer: 1500
+              }).then(()=> console.error(error));
+            
         }       
     }
 }
@@ -110,8 +125,6 @@ let nuevaFactura = document.getElementById('factura').value
 let nuevoCredito = document.getElementById('credito').value
 let nuevoPago = document.getElementById('metodopago').value
 let nuevoNombre = document.getElementById('nuevoNombre').value
-console.log(id)
-console.log('factura --> ',nuevaFactura, 'credito --> ',nuevoCredito, 'pago --> ',nuevoPago, 'nombre --> ',nuevoNombre)
 if(nuevoCredito === 'si') nuevoPago = 'por definir'; 
 await editarTicketEnBaseDeDatos(id, nuevoNombre, nuevoPago, nuevaFactura, nuevoCredito); 
 };
@@ -119,10 +132,19 @@ const editarTicketEnBaseDeDatos = async (id, cliente, nuevoPago, nuevaFacturacio
     console.log(cliente, nuevoPago, nuevaFacturacion, nuevoCredito)
     try {
         await updateMyTicketValues(id, nuevoPago, nuevaFacturacion, cliente, nuevoCredito)
-        alert('Base de datos editada con éxito')
-    } catch (error) {
-        console.error(error)
-        alert('algo ha fallado en tu petición')
+        return Swal.fire({
+            icon: 'success',
+            title: `Base de datos editada con éxito`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+    } catch (error) {      
+        return Swal.fire({
+            icon: 'error',
+            title: `Algo ha fallado, contacta al equipo de desarrollo`,
+            showConfirmButton: false,
+            timer: 1500
+          }).then(()=> console.error(error))
     }
     
 }
