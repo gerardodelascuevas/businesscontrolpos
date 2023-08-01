@@ -148,7 +148,7 @@ async function getMyExpiredTicket(id){
 async function loadPayFromExpiredTiket(id){
     try {
         const conn = await getConnection(); 
-        const result = await conn.query(`UPDATE tickets SET credito = "no" WHERE id = "${id}";`); 
+        const result = await conn.query(`UPDATE tickets SET credito = "pagado" WHERE id = "${id}";`); 
         return result; 
 
     } catch (error) {
@@ -237,6 +237,26 @@ async function deleteTicket(id){
         console.error(error);
     }
 }
+
+async function getTicketsDataForReport(month){
+    try {
+        const conn = await getConnection(); 
+        const result = conn.query(`select * from tickets where fecha LIKE '%${month}';`); 
+        return result; 
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function getPagosDataForReport(month){
+    try {
+        const conn = await getConnection(); 
+        const result = conn.query(`select * from pagos where fecha LIKE '%${month}';`); 
+        return result; 
+    } catch (error) {
+        console.error(error);
+    }
+}
 const createWindow = ()=> {
     window = new BrowserWindow({
         width: 800, 
@@ -283,5 +303,7 @@ module.exports = {
     updateMyTicketValues,
     updateProductWhenYouDeleteTickets,
     getProductByName, 
-    deleteTicket
+    deleteTicket, 
+    getTicketsDataForReport,
+    getPagosDataForReport
 }

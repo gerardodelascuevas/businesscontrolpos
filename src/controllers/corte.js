@@ -4,8 +4,6 @@ let filterTickets = new Array;
 
 //FUNCION PARA CARGAR FACTURAS TOTALES EN EL ARRAY 
 const tickets = async ()=> {
-   //ticketsForShow = await getTickets();
-   //checkDay();
    renderOptionDay();  
 } 
 
@@ -13,6 +11,9 @@ const tickets = async ()=> {
 let dayForprint = ''; 
 
 let miDia = null; 
+let fecha = new Date();
+let mes = Number(fecha.getMonth())+1; 
+let miFecha = fecha.getDate() + '-' + mes + '-'+ fecha.getFullYear();
 
 //Para seleccionar un dia en particular 
 const selectDay = ()=> {
@@ -58,7 +59,6 @@ const renderOptionDay = async()=> {
     let myTickets = document.getElementById('selecciondia'); 
     let misDias = await misDiasFiltrados();
     let misDiasCortados = misDias.slice(misDias.length - 8); 
-    // let misDiasCortados = misDias;
     misDias = misDiasCortados.map(x=> x.fecha)    
         myTickets.innerHTML += `
         <div> 
@@ -440,7 +440,7 @@ const myCashMovement = () => {
             tipo: 'pago a proveedores',
             descripcion: pagoDescription, 
             metodo: pagoproveedor, 
-            fecha: miDia
+            fecha: miFecha
         }
         loadCashMovement(pagoADB); 
         Swal.fire(
@@ -459,7 +459,7 @@ const myCashMovement = () => {
             tipo: 'cobro a clientes',
             descripcion: descripcioncobro,
             metodo: pagocliente, 
-            fecha: miDia
+            fecha: miFecha
         }
         loadCashMovement(pagoADB); 
         Swal.fire(
