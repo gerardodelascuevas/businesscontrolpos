@@ -16,10 +16,10 @@ const renderTicket = (ticket)=> {
     container.innerHTML += `
     <div class="card card-body my-2" id='parte2'> 
         <div class='ticket'> 
-            <img src='../img/logoplan.jpg' alt='Plan de Guinea' id='logo'/>         
-            <span> Agro Plan  </span> 
+            <img src='../img/logosantagertrudis.ico' alt='logo' id='logo'/>         
+            <span> BusinessControl </span> 
             <div id='alinearwasa'> <img src='../img/whatsapp.jpeg' alt='contacto' id='contacto' /> <span class='telefono'> 231 180 8329 </span></div> 
-            <span class='telefono'> comunidadguinea@gmail.com </span>  
+            <span class='telefono'> businesscontrol@gmail.com </span>  
       
         </div> 
 
@@ -35,7 +35,7 @@ const renderTicket = (ticket)=> {
         <span> <b> Total: $ ${(ticket.valor).toFixed(2)} </b></span>
         <span> Gracias por tu compra! </span>     
            
-            <span class='telefono'> Tecnología desarrollada en Plan de Guinea </span> 
+            <span class='telefono'> Tecnología desarrollada Por Gerardo De Las Cuevas </span> 
         
 
         </div>     

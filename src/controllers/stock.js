@@ -224,19 +224,17 @@ const datosCliente = ()=> {
 
 const carrito = ()=> {
   dropMyBag(); 
-  //let head = document.getElementById('head');
   let pago = document.getElementById('pago');  
   let micarrito = document.getElementById('carrito'); 
   micarrito.innerHTML = '';
-  // head.innerHTML = '';
   pago.innerHTML = '';
   let myShop1 = myShop();
 
   micarrito.innerHTML += `  <div class='ticket'> 
-  <img src='../img/logoplan.jpg' alt='Plan de Guinea' id='logo'/> 
-  <span> Agroveterinaria Plan de Guinea </span> 
-  <div> <img src='../img/whatsapp.jpeg' alt='contacto' id='contacto' /> <span class='telefono'> 231 180 8329 </span> 
-  <br> <span class='telefono'> comunidadguinea@gmail.com </span> 
+  <img src='../img/logosantagertrudis.ico' alt='BusinessControl' id='logo'/> 
+  <span> BusinessControl </span> 
+  <div> <img src='../img/whatsapp.jpeg' alt='contacto' id='contacto' /> <span class='telefono'> 222 440 4412 </span> 
+  <br> <span class='telefono'> businesscontrol@gmail.com </span> 
   <p> Fecha: ${miFecha} </p>
   </div> 
 
@@ -263,7 +261,7 @@ const carrito = ()=> {
  <span> Gracias por tu compra! </span> 
   
  <div class='container'>      
-    <span class='telefono'> Tecnología desarrollada en Plan de Guinea </span> 
+    <span class='telefono'> Tecnología desarrollada Por Gerardo de las Cuevas </span> 
  </div> 
 </div>
  `
@@ -356,8 +354,8 @@ const submitOrder =  ()=> {
       try {
         submitTicket(myTicket);
         alert('compra cargada con exito')
-       window.print() 
-       //window.location.reload();
+        window.print() 
+        
       } catch (error) {
         console.error(error)
       }
@@ -368,7 +366,6 @@ const submitOrder =  ()=> {
         submitTicket(myTicket);
         alert('compra cargada con exito');
         window.print();
-       //window.location.reload();
       } catch (error) {
         console.error(error)
       }

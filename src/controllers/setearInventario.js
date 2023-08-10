@@ -11,14 +11,10 @@ async function getMyProducts(){
     allProducts = await getProducts(); 
 }
 
-//se debe mandar a llamar renderProduct con el ID del producto a renderizar 
+
 const nombreBuscado = document.getElementById('nombre'); 
 nombreBuscado.addEventListener('change', (e)=> {
-    console.log(e.target.value)
-    // let MiProducto = allProducts.filter(x=> x.name.toLowerCase().trim().includes(e.target.value))[0]
-    // console.log('prod ', MiProducto)
     autocompleteProduct(e.target.value)
-   // renderProduct(MiProducto.id); 
 })
 
 //SUGERIR PRODUCTOS: 
@@ -48,7 +44,7 @@ function autocompleteProduct(inputValue) {
     return matchedProducts;
   }
   
-  //Rellenar datos de los Inputs en base a sugerencia Pozolezca:
+  //Rellenar datos de los Inputs en base a sugerencia 
   
   function fillInputs(name, id){    
     renderProduct(id);
@@ -91,7 +87,7 @@ const renderProduct = async(id)=> {
     }
 }
 
-const password = 'rpolozov123'; 
+const password = process.env.PASSWORD2; 
 
 const saveChanges = async(id)=> {
     let nuevoNombre = document.getElementById('nuevoNombre').value
@@ -147,7 +143,6 @@ const saveChanges = async(id)=> {
 
 const init = ()=> {
     getMyProducts()
-    // renderSearching()
 } 
 
 init();

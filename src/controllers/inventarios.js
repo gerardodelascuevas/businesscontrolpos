@@ -51,7 +51,7 @@ const calcularValorTotal = ()=> {
 
   const valoresAgroPlan = separator(miValor)
   
-  valorTotal.innerHTML +=`Valor del Inventario de Agro-Plan $ ${valoresAgroPlan}`;
+  valorTotal.innerHTML +=`Valor del Inventario $ ${valoresAgroPlan}`;
 }
 
 function separator(numb) {

@@ -70,7 +70,7 @@ function findMatchingProducts(inputValue) {
   return matchedProducts;
 }
 
-//Rellenar datos de los Inputs en base a sugerencia Pozolezca:
+//Rellenar datos de los Inputs en base a sugerencia:
 
 function fillInputs(name, cost, categoria, detalle){
   document.getElementById('name').value = name; 
@@ -104,12 +104,6 @@ agregarProducto.addEventListener('submit', async e=> {
     document.getElementById('stock').value = ''; 
     document.getElementById('detalle').value = ''; 
     product = {}
-
-    // product.name === '' ? alert('El Nombre del producto no puede estar vacio') : ''; 
-    // product.stock == 0 || '' ? alert('La compra no es válida') : ''; 
-
-    // const result = await createProduct(product); 
-    // return result; 
     renderProductsInBill();
 })
 
@@ -185,7 +179,6 @@ cargar.addEventListener('click', async()=> {
         detalle: productsInBill[i].detalle
       }; 
       const result = await createProduct(myProduct);
-      // alert(`Se ha creado el producto ${myProduct.name} con un costo de ${myProduct.cost} y un stock de ${myProduct.stock}`);
       Swal.fire(
         'Base de datos exitosamente! ',
         `Se ha creado el producto ${myProduct.name} con un costo de ${myProduct.cost} y un stock de ${myProduct.stock}`,

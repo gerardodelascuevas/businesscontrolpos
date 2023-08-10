@@ -42,7 +42,7 @@ const main = document.getElementById('main');
         })        
     } else {
         main.innerHTML= `
-        <h3> Enhorabuena, Agroveterinaria Plan de Guinea No tiene deudores, Sigue así! </h3> 
+        <h3> Enhorabuena, No tiene deudores, Sigue así! </h3> 
         `
     }
     } else {
@@ -100,7 +100,7 @@ const main = document.getElementById('main');
         })        
     } else {
         main.innerHTML= `
-        <h3> Enhorabuena, Agroveterinaria Plan de Guinea No tiene deudores, Sigue así! </h3> 
+        <h3> Enhorabuena, No tiene deudores, Sigue así! </h3> 
         `
     }
 }
@@ -119,10 +119,10 @@ const cargarPago = async(id)=> {
     hidden.innerHTML = ''; 
     hidden.innerHTML += `
     <div class='ticket'> 
-        <img src='../img/logoplan.jpg' alt='Plan de Guinea' id='logo'/>         
-        <span> Agro Plan  </span> 
+        <img src='../img/santagertrudislogo.ico' alt='logo' id='logo'/>         
+        <span> BusinessControl </span> 
         <div id='alinearwasa'> <img src='../img/whatsapp.jpeg' alt='contacto' id='contacto' /> <span class='telefono'> 231 180 8329 </span></div> 
-        <span class='telefono'> comunidadguinea@gmail.com </span> <br>
+        <span class='telefono'> businesscontrol@gmail.com </span> <br>
     </div>
     <div> 
     <span> Usted ha realizado el pago de la nota ${id} con fecha ${factura.fecha} el dia ${miFecha} con el metodo de pago ${metodoPago}</span>

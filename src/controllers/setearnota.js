@@ -51,7 +51,7 @@ const renderTicket = (ticket)=> {
 
 //Eliminar Nota 
 async function deleteMyTicket(ticket){
-    const password = 'rpolozov123'
+    const password = process.env.PASSWORD2;
     const thePassword = document.getElementById('password').value; 
     if(!ticket){
         console.log('no hay ticket')

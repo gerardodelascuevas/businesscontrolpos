@@ -163,9 +163,6 @@ const renderTickets = async()=> {
         </div>
         `
         }
-       
-   
-
     })
     renderBills();
     showMyData();
@@ -361,8 +358,6 @@ const showMyData = async()=> {
         <br> 
         <button id='cargarpago' class='btn btn-primary' onclick={myCashMovement()}> Cargar Movimientos de Efectivo </button> <br>
     </div>
-
-
     <div class = 'card card-body my-2' id='parte4' style="page-break-after: always;">
     <img src='../img/logoplan.jpg' alt='logo'/ id='logo'> 
         <span> Fecha <b> ${miDia} </b></span> </br>
@@ -388,7 +383,7 @@ const showMyData = async()=> {
     notasACredito()
 }
 
-//cargar notas a credito para que las vean los bueyes 
+//cargar notas a credito 
 const notasACredito = async()=> {
     const myData = document.getElementById('notasACredito');
     const titulo = document.getElementById('notasACreditoTitulo')
@@ -474,7 +469,6 @@ const myCashMovement = () => {
     }   
       
     if (!movementsRendered) {
-       //renderMovements();
         movementsRendered = true;
     } else {
         const misDatos = document.getElementById('datosmovimientoscash'); 

@@ -13,7 +13,7 @@ exportar.addEventListener('click', async()=> {
     console.log(misProductos)
     const worksheet = xlsx.utils.json_to_sheet(misProductos); 
     const workbook = xlsx.utils.book_new(); 
-    xlsx.utils.book_append_sheet(workbook, worksheet, 'inventariosFarmacia');
+    xlsx.utils.book_append_sheet(workbook, worksheet, 'inventarios');
     
     //generate buffer
     xlsx.write(workbook, {bookType: 'xlsx', type: 'buffer'})
@@ -21,7 +21,7 @@ exportar.addEventListener('click', async()=> {
     //binary string 
     xlsx.write(workbook, {bookType: 'xlsx', type: 'binary'})
 
-    xlsx.writeFile(workbook, 'inventariosFarmacia.xlsx'); 
+    xlsx.writeFile(workbook, 'inventarios.xlsx'); 
     
     console.log('exportando inventarios')
 })
